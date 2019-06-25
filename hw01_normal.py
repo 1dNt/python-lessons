@@ -16,10 +16,10 @@ import random
 a = int(random.random() * 10000000000)
 print('Загаданное число:', a)
 i = 1
-max = a // (10**(len(str(a)) - i))
-while i <= len(str(a)):
-    if max < a // (10**(len(str(a)) - i)) - (a // (10**(len(str(a)) - i+1)))*10:
-        max = a // (10**(len(str(a)) - i)) - (a // (10**(len(str(a)) - i+1)))*10
+max = a % (10**i) // 10**(i-1)
+while a // 10**(i-1) != 0:
+    if max < a % (10**i) // 10**(i-1):
+        max = a % (10**i) // 10**(i-1)
         i += 1
     else:
         i += 1

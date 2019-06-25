@@ -11,12 +11,12 @@ import random
 
 print('------------\nЗадача-1: вывод цифр в числе\n')
 
-a = int(random.random() * 10000000000)
+a = int(random.random() * 1000000)
 i = 1
 print('Загаданное число:', a)
-while i <= len(str(a)):
-    b = a // (10**(len(str(a)) - i)) - (a // (10**(len(str(a)) - i+1)))*10
-    print('Цифра', i, ':', b)
+while a // 10**(i-1) != 0:
+    b = a % (10**i) // 10**(i-1)
+    print(i, 'цифра с конца:', b)
     i += 1
 
 #v.2
