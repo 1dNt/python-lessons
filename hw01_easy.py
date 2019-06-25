@@ -24,7 +24,7 @@ while a // 10**(i-1) != 0:
 a = int(random.random() * 10000000000)
 i = 1
 print('\nЗагаданное число:', a)
-for number in list(str(a)):
+for number in str(a):
     print('Цифра', i, ':', number)
     i += 1
 

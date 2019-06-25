@@ -27,10 +27,10 @@ print('Максимальнаця цифра в числе:', max)
 
 #v.2
 
-a = int(random.random() * 10000000000)
+a = int(random.random() * 1000)
 print('\nЗагаданное число:', a)
-max = int(list(str(a))[0])
-for number in list(str(a)):
+max = 0
+for number in str(a):
     if max < int(number):
         max = int(number)
 print('Максимальнаця цифра в числе:', max)
