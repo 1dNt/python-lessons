@@ -90,6 +90,15 @@ print('------------\nЗадача-4:\n')
 
 import math
 
+def len_lines(a,b):
+    """
+    Функция вычисления длины отрезка по координатам
+    :param a: tuple(a, b)
+    :param b: tuple(a, b)
+    :return: float
+    """
+    return math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2)
+
 def paral(a,b,c,d):
     """
     Проверка точек параллелограмма
@@ -99,15 +108,11 @@ def paral(a,b,c,d):
     :param d: tuple(a, b)
     :return: bool
     """
-    ch = (math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2) == math.sqrt((c[0] - d[0]) ** 2 + (c[1] - d[1]) ** 2) and \
-          math.sqrt((a[0] - c[0]) ** 2 + (a[1] - c[1]) ** 2) == math.sqrt((b[0] - d[0]) ** 2 + (b[1] - d[1]) ** 2))
+    ch1 = len_lines(a, b) == len_lines(c, d) and len_lines(a, c) == len_lines(b, d)
+    ch2 = len_lines(a, c) == len_lines(b, d) and len_lines(a, d) == len_lines(b, c)
+    ch3 = len_lines(a, b) == len_lines(c, d) and len_lines(a, d) == len_lines(b, c)
 
-    ch2 = (math.sqrt((a[0] - c[0]) ** 2 + (a[1] - c[1]) ** 2) == math.sqrt((b[0] - d[0]) ** 2 + (b[1] - d[1]) ** 2) and \
-           math.sqrt((a[0] - d[0]) ** 2 + (a[1] - d[1]) ** 2) == math.sqrt((b[0] - c[0]) ** 2 + (b[1] - c[1]) ** 2))
-
-    ch3 = (math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2) == math.sqrt((c[0] - d[0]) ** 2 + (c[1] - d[1]) ** 2) and \
-           math.sqrt((a[0] - d[0]) ** 2 + (a[1] - d[1]) ** 2) == math.sqrt((b[0] - c[0]) ** 2 + (b[1] - c[1]) ** 2))
-    return ch or ch2 or ch3
+    return ch1 or ch2 or ch3
 
 A1 = (4,4)
 A2 = (9,4)
