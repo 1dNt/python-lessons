@@ -17,9 +17,9 @@
 
 import os
 import sys
-import hw05_easy as hw5
+import hw05_easy as hw
 
-args = sys.argv
+
 
 def menu(*f_args):
     """
@@ -40,27 +40,6 @@ Q: Выход.
 * - не обязательный параметр
 __________________________________________""")
 
-def get_key(arg):
-    """
-    Выделяет ключ из списка введенных данных
-    :param arg: list
-    :return: list
-    """
-    try:
-        return arg[0]
-    except IndexError:
-        return None
-
-def get_dir_name1(arg):
-    """
-    Выделяет список имен папок из введенных данных
-    :param arg: list
-    :return: list
-    """
-    try:
-        return arg[1:]
-    except IndexError:
-        return None
 
 def change_dir(*f_args):
     """
@@ -77,7 +56,8 @@ def change_dir(*f_args):
     else:
         change_dir(input('Введите название папки:\n'))
 
-def return_dir():
+
+def return_dir(*f_args):
     """
     Функция возврата на папку вверх по каталогу
     :return: None
@@ -101,9 +81,9 @@ do = {
     'h': menu,
     'cd': change_dir,
     'up': return_dir,
-    'dir': hw5.view_dir,
-    'del': hw5.del_dir,
-    'make': hw5.make_dir
+    'dir': hw.view_dir,
+    'del': hw.del_dir,
+    'make': hw.make_dir
 }
 
 while True:
@@ -113,6 +93,5 @@ while True:
         do[key](*dir_name)
         key = dir_name = None
     else:
-        ans = input('\nУкажите ключ. (h - для получения справки)\n')
-        key = get_key(ans.split(' '))
-        dir_name = get_dir_name1(ans.split(' '))
+        dir_name = input('\nУкажите ключ. (h - для получения справки)\n').split(' ')
+        key = dir_name.pop(0)
