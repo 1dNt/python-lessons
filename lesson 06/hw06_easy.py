@@ -94,25 +94,24 @@ class Trapez(Triangle):
             'd': 3,
         }
         lines = [round(geo.len_lines(tmp[idx - 1], itm), 3) for idx, itm in enumerate(tmp)]
-        if dict.get(arg):
+        if dict.get(arg) in dict.values():
             return lines[dict.get(arg)]
         else:
             return lines
 
-    @property
     def square(self):
-        s = ((self.len_side()[2] + self.len_side()[0]) / 2) * \
-            sqrt(self.len_side()[1] ** 2 - (
-                    ((self.len_side()[0] - self.len_side()[2]) ** 2
-                     + self.len_side()[1] ** 2
-                     - self.len_side()[3] ** 2) /
-                    (2 * (self.len_side()[0] - self.len_side()[2]))) ** 2
+        s = ((self.len_side('b') + self.len_side('a')) / 2) * \
+            sqrt(self.len_side('c') ** 2 - (
+                    ((self.len_side('b') - self.len_side('a')) ** 2
+                     + self.len_side('c') ** 2
+                     - self.len_side('d') ** 2) /
+                    (2 * (self.len_side('b') - self.len_side('a')))) ** 2
                  )
         return round(s, 2)
 
 
 figure2 = Trapez(a, b, c, d)
 print(f'Равнобедренная трапеция? - {figure2.isequi()}')
-print(f'Длины сторон b/c/a/d: {figure2.len_side()}')
+print(f"Длины сторон b/c/a/d: {figure2.len_side()}")
 print(f'Периметр трапеции: {figure2.perimeter()}')
-print(f'Площадь трапеции: {figure2.square}')
+print(f'Площадь трапеции: {figure2.square()}')
